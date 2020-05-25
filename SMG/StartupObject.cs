@@ -13,16 +13,17 @@ namespace SMG
         public bool IsCriticalApp { get; set; } = false;
         public bool IsDisabled { get; set; } = false;
         public StartupKind kind { get; set; }
-        public string LaunchCommand { get; set; }
+        public RegistryObject RegObject { get; set; }
 
-        public StartupObject(string name, string fpath, bool isCritical, bool isDisabled, StartupKind skind, string lcmd = "")
+        public StartupObject(string name, string fpath, bool isCritical, bool isDisabled,
+            StartupKind skind, RegistryObject regObj = null)
         {
             this.Name = name;
             this.FilePath = fpath;
             this.IsCriticalApp = isCritical;
             this.IsDisabled = isDisabled;
             this.kind = skind;
-            this.LaunchCommand = lcmd;
+            this.RegObject = regObj;
         }
 
 
