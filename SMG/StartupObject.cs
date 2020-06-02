@@ -12,22 +12,22 @@ namespace SMG
         public string FilePath { get; set; }
         public bool IsCriticalApp { get; set; } = false;
         public bool IsDisabled { get; set; } = false;
-        public StartupKind kind { get; set; }
-        public RegistryObject RegObject { get; set; }
+        public StartupKind Type { get; set; }
+        public string LaunchCommand { get; set; }
 
-        public StartupObject(string name, string fpath, bool isCritical, bool isDisabled,
-            StartupKind skind, RegistryObject regObj = null)
+        public StartupObject(string name, string fpath, StartupKind skind,
+            string lcommand = "", bool isCritical = false, bool isDisabled = false)
         {
             this.Name = name;
             this.FilePath = fpath;
+            this.Type = skind;
+            this.LaunchCommand = lcommand;
             this.IsCriticalApp = isCritical;
             this.IsDisabled = isDisabled;
-            this.kind = skind;
-            this.RegObject = regObj;
+            
+
         }
 
-
-
     }
-    enum StartupKind { AllUsersPath, DefaultStartupPath, HKLMKey, HKCUKey }
+    enum StartupKind { AllUsersPath, UserStartupPath, HKLMKey, HKCUKey }
 }
